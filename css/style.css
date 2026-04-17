@@ -1,0 +1,400 @@
+/* =========================================================
+   SpotSurfer – Vaporwave CSS
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ── Reset & Root variables ──────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink:    #ff71ce;
+  --purple:  #b967ff;
+  --cyan:    #01cdfe;
+  --magenta: #ff00ff;
+  --green:   #05ffa1;
+  --yellow:  #fff700;
+  --bg:      #0d0d2b;
+  --bg-mid:  #1a0033;
+
+  --font: 'Press Start 2P', 'Courier New', monospace;
+
+  --glow-pink:    0 0 8px var(--pink),    0 0 20px var(--pink);
+  --glow-cyan:    0 0 8px var(--cyan),    0 0 20px var(--cyan);
+  --glow-magenta: 0 0 10px var(--magenta), 0 0 30px var(--magenta);
+  --glow-green:   0 0 8px var(--green),   0 0 20px var(--green);
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--cyan);
+  font-family: var(--font);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Screen container ────────────────────────────────────── */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  padding: 1.5rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ── Start Screen ────────────────────────────────────────── */
+#start-screen {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 65%, #1a0033 0%, transparent 70%),
+    var(--bg);
+}
+
+/* Logo */
+.logo { text-align: center; }
+
+.logo h1 {
+  font-size: clamp(1.8rem, 7vw, 3.8rem);
+  color: var(--magenta);
+  text-shadow: var(--glow-magenta);
+  letter-spacing: 4px;
+  line-height: 1.1;
+}
+
+.logo h1 span {
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.tagline {
+  margin-top: .6rem;
+  font-size: clamp(.45rem, 1.5vw, .65rem);
+  color: var(--purple);
+  text-shadow: 0 0 10px var(--purple);
+}
+
+/* Info card */
+.controls-info {
+  max-width: 360px;
+  width: 100%;
+  background: rgba(255, 0, 255, .05);
+  border: 1px solid rgba(255, 0, 255, .3);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  font-size: clamp(.42rem, 1.4vw, .58rem);
+  line-height: 2.4;
+  text-align: center;
+  color: var(--cyan);
+}
+
+.controls-info strong {
+  color: var(--pink);
+}
+
+/* Spotify section */
+.spotify-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+.spotify-status {
+  font-size: .45rem;
+  color: var(--purple);
+  min-height: 1em;
+  text-align: center;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn-primary {
+  background: transparent;
+  color: var(--magenta);
+  border: 2px solid var(--magenta);
+  padding: .9rem 2rem;
+  font-family: var(--font);
+  font-size: clamp(.6rem, 2vw, .8rem);
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: var(--glow-magenta), inset 0 0 10px rgba(255, 0, 255, .1);
+  transition: all .15s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--magenta);
+  color: var(--bg);
+  box-shadow: 0 0 30px var(--magenta), 0 0 60px var(--magenta);
+  transform: scale(1.04);
+  outline: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: .65rem 1.4rem;
+  font-family: var(--font);
+  font-size: clamp(.44rem, 1.4vw, .6rem);
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(1, 205, 254, .3);
+  transition: all .15s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background: rgba(1, 205, 254, .1);
+  box-shadow: var(--glow-cyan);
+  outline: none;
+}
+
+.btn-secondary.connected {
+  color: var(--green);
+  border-color: var(--green);
+  box-shadow: var(--glow-green);
+}
+
+/* ── Game Screen ─────────────────────────────────────────── */
+#game-screen {
+  padding: 0;
+}
+
+#game-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* HUD */
+#hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: .8rem 1.2rem;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(13,13,43,.7) 0%, transparent 100%);
+}
+
+#score-display,
+#mic-level,
+#lives-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+}
+
+.label {
+  font-size: clamp(.3rem, 1vw, .4rem);
+  color: var(--purple);
+  letter-spacing: 2px;
+}
+
+#score {
+  font-size: clamp(.75rem, 3vw, 1.1rem);
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+#lives {
+  font-size: clamp(.7rem, 2.5vw, 1rem);
+}
+
+/* Audio level bar */
+#level-bar {
+  width: 70px;
+  height: 8px;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#level-fill {
+  height: 100%;
+  width: 0%;
+  max-width: 100%;
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  box-shadow: 0 0 6px var(--green);
+  transition: width .05s linear;
+}
+
+/* Pause button */
+#pause-btn {
+  position: absolute;
+  top: .8rem;
+  right: .8rem;
+  background: rgba(13, 13, 43, .6);
+  border: 1px solid rgba(255, 255, 255, .25);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: .3rem .5rem;
+  z-index: 20;
+  border-radius: 4px;
+  line-height: 1;
+  transition: border-color .15s;
+}
+#pause-btn:hover { border-color: var(--cyan); }
+
+/* Pause overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 13, 43, .85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  z-index: 30;
+}
+
+.overlay p {
+  font-size: clamp(1rem, 5vw, 2rem);
+  color: var(--magenta);
+  text-shadow: var(--glow-magenta);
+}
+
+/* Now-playing banner */
+#now-playing {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(.35rem, 1.2vw, .45rem);
+  color: var(--green);
+  background: rgba(0, 0, 0, .65);
+  padding: .4rem .9rem;
+  border-radius: 4px;
+  border: 1px solid rgba(5, 255, 161, .3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80vw;
+  z-index: 10;
+  pointer-events: none;
+  text-shadow: 0 0 6px var(--green);
+}
+
+/* Warning banner */
+.banner {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .4rem;
+  color: var(--yellow);
+  background: rgba(0, 0, 0, .7);
+  padding: .4rem .8rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 247, 0, .4);
+  z-index: 10;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ── Game-Over Screen ────────────────────────────────────── */
+#gameover-screen {
+  background: rgba(13, 13, 43, .96);
+}
+
+#gameover-screen h2 {
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  color: var(--magenta);
+  text-shadow: var(--glow-magenta);
+}
+
+.score-line {
+  font-size: clamp(.5rem, 2vw, .7rem);
+  color: var(--cyan);
+}
+
+#final-score {
+  color: var(--magenta);
+}
+
+.hs-msg {
+  font-size: clamp(.4rem, 1.5vw, .55rem);
+  color: var(--green);
+  text-shadow: var(--glow-green);
+  min-height: 1.2em;
+}
+
+/* ── Spotify auth screen ─────────────────────────────────── */
+#spotify-screen {
+  background: var(--bg);
+}
+
+.connecting-text {
+  font-size: .7rem;
+  color: var(--green);
+  text-shadow: var(--glow-green);
+  animation: pulse 1s infinite;
+}
+
+/* ── Keyframe animations ─────────────────────────────────── */
+@keyframes glitch {
+  0%, 100% {
+    text-shadow: var(--glow-magenta);
+    transform: none;
+  }
+  25% {
+    text-shadow: -3px 0 var(--cyan), 3px 0 var(--pink);
+    transform: translateX(-2px);
+  }
+  75% {
+    text-shadow: 3px 0 var(--cyan), -3px 0 var(--pink);
+    transform: translateX(2px);
+  }
+}
+
+.glitch {
+  animation: glitch .35s steps(1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .4; }
+}
+
+/* ── Responsive tweaks ───────────────────────────────────── */
+@media (max-width: 480px) {
+  .logo h1    { font-size: 1.8rem; }
+  #level-bar  { width: 50px; }
+}
+
+/* ── PWA safe-area support ───────────────────────────────── */
+@supports (padding-top: env(safe-area-inset-top)) {
+  #hud { padding-top: calc(.8rem + env(safe-area-inset-top)); }
+}
