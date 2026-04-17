@@ -32,7 +32,12 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   /* Pass through Spotify API / auth calls – never cache those */
-  if (event.request.url.includes('spotify.com')) return;
+  try {
+    const reqHost = new URL(event.request.url).hostname;
+    if (reqHost === 'api.spotify.com' || reqHost === 'accounts.spotify.com') return;
+  } catch {
+    /* Relative URL or invalid URL – let it fall through to cache logic */
+  }
 
   event.respondWith(
     caches.match(event.request).then(cached => {
