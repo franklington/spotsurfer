@@ -1,0 +1,31 @@
+{
+  "name": "SpotSurfer",
+  "short_name": "SpotSurfer",
+  "description": "Surf the audiowave in vaporwave style! Dodge obstacles while riding your sound.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d0d2b",
+  "theme_color": "#0d0d2b",
+  "orientation": "any",
+  "categories": ["games", "entertainment", "music"],
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

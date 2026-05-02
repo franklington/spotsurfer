@@ -1,0 +1,15 @@
+{
+  "name": "spotsurfer",
+  "version": "1.0.0",
+  "description": "Surf the audiowave in vaporwave style – a PWA game driven by your microphone.",
+  "private": true,
+  "scripts": {
+    "icons": "node generate-icons.js",
+    "serve": "npx serve .",
+    "start": "npm run serve"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5",
+    "serve": "^14.0.0"
+  }
+}

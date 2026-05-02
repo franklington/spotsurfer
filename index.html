@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SpotSurfer 🌊</title>
+  <meta name="description" content="Surf the audiowave in vaporwave style! Use your microphone to ride the sound and dodge obstacles.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d0d2b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SpotSurfer">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── Start Screen ─────────────────────────────── -->
+    <div id="start-screen" class="screen">
+      <div class="logo">
+        <h1>SPOT<span>SURFER</span></h1>
+        <p class="tagline">🌊 Ride the sound wave</p>
+      </div>
+
+      <div class="controls-info">
+        <p>🎤 Your microphone is the controller</p>
+        <p>Speak <strong>louder</strong> → surfer goes <strong>UP</strong></p>
+        <p>Speak <strong>softer</strong> → surfer goes <strong>DOWN</strong></p>
+        <p>👆 Touch/Space works too!</p>
+        <p>Dodge the neon obstacles!</p>
+      </div>
+
+      <button id="start-btn" class="btn-primary">▶ START SURFING</button>
+
+      <div class="spotify-section">
+        <button id="spotify-btn" class="btn-secondary">🎵 Connect Spotify</button>
+        <p id="spotify-status" class="spotify-status"></p>
+      </div>
+    </div>
+
+    <!-- ── Game Screen ──────────────────────────────── -->
+    <div id="game-screen" class="screen hidden">
+      <canvas id="game-canvas"></canvas>
+
+      <div id="hud">
+        <div id="score-display">
+          <span class="label">SCORE</span>
+          <span id="score">0</span>
+        </div>
+
+        <div id="mic-level">
+          <span class="label">AUDIO</span>
+          <div id="level-bar">
+            <div id="level-fill"></div>
+          </div>
+        </div>
+
+        <div id="lives-display">
+          <span class="label">LIVES</span>
+          <span id="lives">❤️❤️❤️</span>
+        </div>
+      </div>
+
+      <div id="now-playing" class="hidden"></div>
+
+      <button id="pause-btn" aria-label="Pause">⏸</button>
+
+      <div id="pause-overlay" class="hidden overlay">
+        <p>PAUSED</p>
+        <button id="resume-btn" class="btn-primary">▶ RESUME</button>
+        <button id="quit-btn" class="btn-secondary">QUIT</button>
+      </div>
+
+      <div id="mic-denied-banner" class="hidden banner">
+        ⚠️ No mic — using touch/keyboard control
+      </div>
+    </div>
+
+    <!-- ── Game Over Screen ─────────────────────────── -->
+    <div id="gameover-screen" class="screen hidden">
+      <h2 class="glitch">GAME OVER</h2>
+      <p class="score-line">Score: <span id="final-score">0</span></p>
+      <p id="high-score-msg" class="hs-msg"></p>
+      <button id="retry-btn" class="btn-primary">↺ TRY AGAIN</button>
+      <button id="menu-btn" class="btn-secondary">MENU</button>
+    </div>
+
+    <!-- ── Spotify Auth Handling Screen ─────────────── -->
+    <div id="spotify-screen" class="screen hidden">
+      <p class="connecting-text">Connecting to Spotify…</p>
+    </div>
+
+  </div>
+
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/spotify.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
